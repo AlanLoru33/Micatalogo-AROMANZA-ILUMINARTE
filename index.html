@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AzuVicka | Experiencia Sensorial Suprema</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --oro: #c5a059;
+            --oro-brillante: #f3cf8a;
+            --oscuro: #121212;
+            --marfil: #fdfaf6;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0; padding: 0;
+            background: linear-gradient(-45deg, #fdfaf6, #ece0d1, #dcd0c0, #f5ebe0);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--oscuro);
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Contenedor de Partículas */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Header de Alto Impacto */
+        header {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 15vw, 9rem);
+            margin: 0;
+            background: linear-gradient(to right, #b8914b 20%, #f3cf8a 40%, #f3cf8a 60%, #b8914b 80%);
+            background-size: 200% auto;
+            color: #000;
+            background-clip: text;
+            text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite, fadeInUp 1.5s ease-out;
+            letter-spacing: 10px;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tagline {
+            font-size: 1rem;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            color: var(--oro);
+            margin-top: 20px;
+            font-weight: 700;
+            animation: fadeIn 3s ease-in;
+        }
+
+        /* Menú de Filtros Moderno */
+        .nav-filtros {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--oro);
+            color: var(--oro);
+            padding: 12px 28px;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.4s;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--oro);
+            color: var(--oscuro);
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+        }
+
+        /* Grid y Tarjetas con Profundidad */
+        .contenedor-principal {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 0px; /* Estilo Galería de Arte */
+            overflow: hidden;
+            transition: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: 1.5s;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .info {
+            padding: 40px 25px;
+            text-align: center;
+        }
+
+        .info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .precio {
+            font-size: 1.5rem;
+            color: var(--oro);
+            font-weight: 400;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .btn-compra {
+            background: var(--oscuro);
+            color: white;
+            padding: 15px 0;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            letter-spacing: 3px;
+            transition: 0.4s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-compra:hover {
+            background: var(--oro);
+            color: var(--oscuro);
+        }
+
+        footer {
+            padding: 120px 20px;
+            background: var(--oscuro);
+            color: var(--marfil);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Partícula individual */
+        .particle {
+            position: absolute;
+            background: var(--oro);
+            border-radius: 50%;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="particles-container"></div>
+
+<header>
+    <h1>AzuVicka</h1>
+    <div class="tagline">Fragancias que Elevan el Alma</div>
+</header>
+
+<nav class="nav-filtros">
+    <button class="filter-btn active" onclick="filterGallery('todos', this)">Colección Completa</button>
+    <button class="filter-btn" onclick="filterGallery('sahumerios', this)">Sahumerios</button>
+    <button class="filter-btn" onclick="filterGallery('velas', this)">Velas & Difusores</button>
+    <button class="filter-btn" onclick="filterGallery('cascadas', this)">Cascadas</button>
+</nav>
+
+<div class="contenedor-principal">
+    <div class="grid">
+        <div class="card sahumerios">
+            <img src="https://i.ibb.co/kVpvzNVJ/Imagen-de-Whats-App-2025-09-05-a-las-10-53-36-ee6774e6.jpg" alt="Aromanza">
+            <div class="info">
+                <h3>Aromanza Elixir</h3>
+                <span class="precio">$2.800</span>
+                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+            </div>
+        </div>
+
+        <div class="card velas">
+            <img src="https://i.ibb.co/9kHKyn8S/Imagen-de-Whats-App-2025-09-05-a-las-10-42-11-df5a0740.jpg" alt="Difusores">
+            <div class="info">
+                <h3>Difusores Prestige</h3>
+                <span class="precio">$3.500</span>
+                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+            </div>
+        </div>
+
+        <div class="card cascadas">
+            <img src="https://i.ibb.co/FkGTd5ZG/Imagen-de-Whats-App-2025-09-05-a-las-10-57-32-4beecfbc.jpg" alt="Cascadas">
+            <div class="info">
+                <h3>Buda de Humo</h3>
+                <span class="precio">$4.200</span>
+                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; letter-spacing: 5px;">AzuVicka</h2>
+    <p style="letter-spacing: 3px; color: var(--oro);">BIENESTAR & AROMAS</p>
+    <div style="margin-top: 40px;">
+        <a href="https://instagram.com/azuvicka" style="color: white; text-decoration: none; border: 1px solid white; padding: 10px 20px;">INSTAGRAM</a>
+    </div>
+</footer>
+
+<script>
+    // Crear Partículas Doradas
+    function createParticles() {
+        const container = document.getElementById('particles-container');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 5 + 2 + 'px';
+            particle.style.width = size;
+            particle.style.height = size;
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.animationDuration = Math.random() * 10 + 5 + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    // Filtros
+    function filterGallery(category, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "scale(0.9)";
+            setTimeout(() => {
+                if (category === 'todos' || card.classList.contains(category)) {
+                    card.style.display = "block";
+                    setTimeout(() => {
+                        card.style.opacity = "1";
+                        card.style.transform = "scale(1)";
+                    }, 50);
+                } else {
+                    card.style.display = "none";
+                }
+            }, 400);
+        });
+    }
+</script>
+
+</body>
+</html>
