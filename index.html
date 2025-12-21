@@ -11,18 +11,32 @@
             --oro-brillante: #f3cf8a;
             --oscuro: #121212;
             --marfil: #fdfaf6;
+            --bg-body: linear-gradient(-45deg, #fdfaf6, #ece0d1, #dcd0c0, #f5ebe0);
+            --shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        * { box-sizing: border-box; }
+        /* MODO OSCURO */
+        body.dark-mode {
+            --oscuro: #fdfaf6;
+            --marfil: #121212;
+            --bg-body: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #000000, #121212);
+            color: #fdfaf6;
+        }
+        body.dark-mode .card { background: #1a1a1a; border-color: #333; }
+        body.dark-mode .info h3 { color: white; }
+        body.dark-mode #search-input { background: #222; color: white; border-color: var(--oro); }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0;
-            background: linear-gradient(-45deg, #fdfaf6, #ece0d1, #dcd0c0, #f5ebe0);
+            background: var(--bg-body);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: var(--oscuro);
             overflow-x: hidden;
+            transition: background 0.5s ease;
         }
 
         @keyframes gradientBG {
@@ -31,19 +45,11 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Contenedor de Partículas */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
+        #particles-container { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
 
-        /* Header de Alto Impacto */
+        /* HEADER */
         header {
-            height: 70vh;
+            height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -55,187 +61,137 @@
 
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(4rem, 15vw, 9rem);
+            font-size: clamp(3.5rem, 15vw, 9rem);
             margin: 0;
             background: linear-gradient(to right, #b8914b 20%, #f3cf8a 40%, #f3cf8a 60%, #b8914b 80%);
             background-size: 200% auto;
-            color: #000;
             background-clip: text;
-            text-fill-color: transparent;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 4s linear infinite, fadeInUp 1.5s ease-out;
             letter-spacing: 10px;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+            text-transform: uppercase;
         }
 
         .tagline {
             font-size: 1rem;
-            letter-spacing: 12px;
+            letter-spacing: 10px;
             text-transform: uppercase;
             color: var(--oro);
-            margin-top: 20px;
+            margin: 20px 0;
             font-weight: 700;
-            animation: fadeIn 3s ease-in;
         }
 
-        /* Menú de Filtros Moderno */
+        /* BUSCADOR */
+        .search-container { margin: 20px auto; max-width: 500px; width: 90%; position: relative; z-index: 1001; }
+        #search-input {
+            width: 100%; padding: 18px 30px; border-radius: 50px; border: 1px solid var(--oro);
+            background: rgba(255,255,255,0.9); font-family: 'Montserrat'; outline: none; transition: 0.3s;
+            font-size: 1rem; box-shadow: var(--shadow);
+        }
+
+        /* NAVEGACIÓN */
         .nav-filtros {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(18, 18, 18, 0.95);
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(18, 18, 18, 0.95); padding: 20px;
+            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+            backdrop-filter: blur(15px);
         }
 
         .filter-btn {
-            background: transparent;
-            border: 1px solid var(--oro);
-            color: var(--oro);
-            padding: 12px 28px;
-            cursor: pointer;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.4s;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
+            background: transparent; border: 1px solid var(--oro); color: var(--oro);
+            padding: 10px 22px; cursor: pointer; border-radius: 50px;
+            font-weight: 600; transition: 0.4s; text-transform: uppercase; font-size: 0.7rem;
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--oro);
-            color: var(--oscuro);
-            box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
-        }
+        .filter-btn.active, .filter-btn:hover { background: var(--oro); color: #121212; }
 
-        /* Grid y Tarjetas con Profundidad */
-        .contenedor-principal {
-            max-width: 1400px;
-            margin: 60px auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
-        }
+        /* GRID Y TARJETAS */
+        .contenedor-principal { max-width: 1400px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 10; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
 
         .card {
-            background: white;
-            border-radius: 0px; /* Estilo Galería de Arte */
-            overflow: hidden;
-            transition: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-            border: 1px solid rgba(0,0,0,0.05);
+            background: white; border-radius: 12px; overflow: hidden;
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(0,0,0,0.05); position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-20px);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+        .card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
+        .card img { width: 100%; height: 450px; object-fit: cover; transition: 1.2s; cursor: zoom-in; }
+        .card:hover img { transform: scale(1.08); }
+
+        /* BADGE NUEVO (RECOMENDACIÓN) */
+        .badge {
+            position: absolute; top: 20px; left: 20px; background: var(--oro);
+            color: #121212; padding: 5px 15px; font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; border-radius: 4px; z-index: 5;
         }
 
-        .card img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            transition: 1.5s;
-        }
-
-        .card:hover img {
-            transform: scale(1.1);
-        }
-
-        .info {
-            padding: 40px 25px;
-            text-align: center;
-        }
-
-        .info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin: 0;
-            font-weight: 400;
-        }
-
-        .precio {
-            font-size: 1.5rem;
-            color: var(--oro);
-            font-weight: 400;
-            margin: 20px 0;
-            display: block;
-        }
+        .info { padding: 30px 20px; text-align: center; }
+        .info h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; color: #121212; transition: 0.3s; }
+        .precio { font-size: 1.4rem; color: var(--oro); margin: 15px 0; font-weight: 700; display: block; }
 
         .btn-compra {
-            background: var(--oscuro);
-            color: white;
-            padding: 15px 0;
-            text-decoration: none;
-            display: block;
-            font-weight: 600;
-            letter-spacing: 3px;
-            transition: 0.4s;
-            text-transform: uppercase;
-            font-size: 0.8rem;
+            background: var(--oscuro); color: var(--marfil); padding: 15px;
+            text-decoration: none; display: block; font-weight: 700;
+            letter-spacing: 2px; transition: 0.4s; text-transform: uppercase;
+            font-size: 0.8rem; border: none; width: 100%; cursor: pointer; border-radius: 8px;
+        }
+        .btn-compra:hover { background: var(--oro); color: #121212; transform: scale(1.02); }
+
+        /* BOTONES FLOTANTES */
+        .botones-flotantes { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .btn-flotante {
+            width: 55px; height: 55px; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); transition: 0.4s;
+            cursor: pointer; border: none; text-decoration: none;
+        }
+        #btn-top { background: var(--oro); display: none; font-size: 20px; }
+        .float-ws { background: #25d366; animation: pulse-ws 2s infinite; }
+        .float-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
+        .float-dark { background: #333; font-size: 22px; }
+
+        @keyframes pulse-ws {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        .btn-compra:hover {
-            background: var(--oro);
-            color: var(--oscuro);
+        /* MODAL DE IMAGEN (ZOOM) */
+        #modal-img {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center;
+            cursor: zoom-out; backdrop-filter: blur(5px);
         }
+        #modal-img img { max-width: 90%; max-height: 90%; border: 3px solid var(--oro); border-radius: 10px; }
 
-        footer {
-            padding: 120px 20px;
-            background: var(--oscuro);
-            color: var(--marfil);
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
+        footer { padding: 100px 20px; background: #000; color: #fdfaf6; text-align: center; }
 
-        /* Partícula individual */
-        .particle {
-            position: absolute;
-            background: var(--oro);
-            border-radius: 50%;
-            opacity: 0.3;
-            pointer-events: none;
-            animation: float linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-
+        .particle { position: absolute; background: var(--oro); border-radius: 50%; opacity: 0.3; pointer-events: none; animation: float linear infinite; }
+        @keyframes float { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 0.5; } 100% { transform: translateY(-100vh); opacity: 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes shine { to { background-position: 200% center; } }
     </style>
 </head>
-<body>
+<body id="top">
 
 <div id="particles-container"></div>
 
+<div id="modal-img" onclick="this.style.display='none'">
+    <img id="img-full" src="" alt="Zoom">
+</div>
+
 <header>
     <h1>AzuVicka</h1>
-    <div class="tagline">Fragancias que Elevan el Alma</div>
+    <div class="tagline">Bienestar & Aromas Premium</div>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="¿Qué aroma buscas hoy?" onkeyup="searchProducts()">
+    </div>
 </header>
 
 <nav class="nav-filtros">
-    <button class="filter-btn active" onclick="filterGallery('todos', this)">Colección Completa</button>
+    <button class="filter-btn active" onclick="filterGallery('todos', this)">Todos</button>
     <button class="filter-btn" onclick="filterGallery('sahumerios', this)">Sahumerios</button>
     <button class="filter-btn" onclick="filterGallery('velas', this)">Velas</button>
     <button class="filter-btn" onclick="filterGallery('cascadas', this)">Cascadas</button>
@@ -244,183 +200,138 @@
 </nav>
 
 <div class="contenedor-principal">
-    <div class="grid">
+    <div class="grid" id="product-grid">
+        
         <div class="card sahumerios">
-            <img src="https://i.ibb.co/kVpvzNVJ/Imagen-de-Whats-App-2025-09-05-a-las-10-53-36-ee6774e6.jpg" alt="Sahumerio Premium Naturales">
+            <div class="badge">Nuevo</div>
+            <img src="https://i.ibb.co/kVpvzNVJ/Imagen-de-Whats-App-2025-09-05-a-las-10-53-36-ee6774e6.jpg" onclick="openZoom(this.src)" alt="Sahumerio Premium Naturales">
             <div class="info">
                 <h3>Sahumerio Premium Naturales</h3>
                 <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+                <button onclick="consultarProducto('Sahumerio Premium Naturales')" class="btn-compra">CONSULTAR WHATSAPP</button>
             </div>
         </div>
+
         <div class="card sahumerios">
-            <img src="https://i.ibb.co/QFDmcxJj/Imagen-de-Whats-App-2025-09-05-a-las-10-53-48-ffbbbd5c.jpg" alt="Sahumerio Premium Naturales">
+            <img src="https://i.ibb.co/QFDmcxJj/Imagen-de-Whats-App-2025-09-05-a-las-10-53-48-ffbbbd5c.jpg" onclick="openZoom(this.src)" alt="Sahumerio Floral">
             <div class="info">
-                <h3>Sahumerio Premium Naturales</h3>
+                <h3>Sahumerio Floral</h3>
                 <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-            <div class="card sahumerios">
-            <img src="https://i.ibb.co/4nrPCC0J/Imagen-de-Whats-App-2025-09-05-a-las-10-54-00-b82f1a75.jpg" alt="Sahumerio Premium Naturales">
-            <div class="info">
-                <h3>Sahumerio Premium Naturales</h3>
-                <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-            <div class="card sahumerios">
-            <img src="https://i.ibb.co/j9HYTsnV/Imagen-de-Whats-App-2025-09-05-a-las-10-53-23-bb5e537e.jpg" alt="Sahumerio Sagrada Madre Yagra">
-            <div class="info">
-                <h3>Sahumerio Sagrada Madre Yagra</h3>
-                <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-            <div class="card sahumerios">
-            <img src="https://i.ibb.co/ZR7tJFML/Imagen-de-Whats-App-2025-09-05-a-las-10-55-10-0bc69071.jpg" alt="Sahumerio Palo Santo">
-            <div class="info">
-                <h3>Sahumerio Palo Santo</h3>
-                <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+                <button onclick="consultarProducto('Sahumerio Floral')" class="btn-compra">CONSULTAR WHATSAPP</button>
             </div>
         </div>
 
         <div class="card velas">
-            <img src="https://i.ibb.co/qMMrmFX1/Imagen-de-Whats-App-2025-09-05-a-las-11-00-11-3e99ca97.jpg" alt="Velas">
+            <div class="badge">Tendencia</div>
+            <img src="https://i.ibb.co/qMMrmFX1/Imagen-de-Whats-App-2025-09-05-a-las-11-00-11-3e99ca97.jpg" onclick="openZoom(this.src)" alt="Velas de Soja">
             <div class="info">
-                <h3>Velas</h3>
+                <h3>Velas de Soja Artesanales</h3>
                 <span class="precio">$3.500</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+                <button onclick="consultarProducto('Velas de Soja')" class="btn-compra">CONSULTAR WHATSAPP</button>
             </div>
         </div>
 
         <div class="card cascadas">
-            <img src="https://i.ibb.co/FkGTd5ZG/Imagen-de-Whats-App-2025-09-05-a-las-10-57-32-4beecfbc.jpg" alt="Cascadas">
+            <img src="https://i.ibb.co/FkGTd5ZG/Imagen-de-Whats-App-2025-09-05-a-las-10-57-32-4beecfbc.jpg" onclick="openZoom(this.src)" alt="Buda de Humo">
             <div class="info">
-                <h3>Buda de Humo</h3>
+                <h3>Cascada Buda de Humo</h3>
                 <span class="precio">$4.200</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-        <div class="card cascadas">
-            <img src="https://i.ibb.co/rrStcxc/Imagen-de-Whats-App-2025-09-05-a-las-10-57-23-67ee66a6.jpg" alt="Cascadas">
-            <div class="info">
-                <h3>casacada y porta velas</h3>
-                <span class="precio">$4.200</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-        <div class="card cascadas">
-            <img src="https://i.ibb.co/FkGTd5ZG/Imagen-de-Whats-App-2025-09-05-a-las-10-57-32-4beecfbc.jpg" alt="Cascadas">
-            <div class="info">
-                <h3>Cascada simple</h3>
-                <span class="precio">$4.200</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+                <button onclick="consultarProducto('Cascada Buda de Humo')" class="btn-compra">CONSULTAR WHATSAPP</button>
             </div>
         </div>
 
         <div class="card conitos">
-            <img src="https://i.ibb.co/ycC0XpcR/Imagen-de-Whats-App-2025-09-05-a-las-10-56-43-1ca0faaf.jpg" alt="conitos">
+            <img src="https://i.ibb.co/ycC0XpcR/Imagen-de-Whats-App-2025-09-05-a-las-10-56-43-1ca0faaf.jpg" onclick="openZoom(this.src)" alt="Conitos Aromáticos">
             <div class="info">
-                <h3>conitos</h3>
+                <h3>Conitos Aromáticos</h3>
                 <span class="precio">$3.500</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-        <div class="card conitos">
-            <img src="https://i.ibb.co/pjJJX7qz/Imagen-de-Whats-App-2025-09-05-a-las-10-56-54-547aeba8.jpg" alt="conitos">
-            <div class="info">
-                <h3>conitos</h3>
-                <span class="precio">$4.200</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+                <button onclick="consultarProducto('Conitos Aromáticos')" class="btn-compra">CONSULTAR WHATSAPP</button>
             </div>
         </div>
 
         <div class="card difusores">
-            <img src="https://i.ibb.co/qLbQ0wGm/Imagen-de-Whats-App-2025-09-05-a-las-10-41-52-f54a2a42.jpg" alt="difusores">
+            <img src="https://i.ibb.co/qLbQ0wGm/Imagen-de-Whats-App-2025-09-05-a-las-10-41-52-f54a2a42.jpg" onclick="openZoom(this.src)" alt="Difusor Iluminarte">
             <div class="info">
-                <h3>difusores Iluminarte</h3>
+                <h3>Difusor Ambiental</h3>
                 <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
+                <button onclick="consultarProducto('Difusor Ambiental')" class="btn-compra">CONSULTAR WHATSAPP</button>
             </div>
         </div>
-        <div class="card difusores">
-            <img src="https://i.ibb.co/yF4BJC69/Imagen-de-Whats-App-2025-09-05-a-las-10-42-03-b9e9d29a.jpg" alt="difusores">
-            <div class="info">
-                <h3>difusores Iluminarte</h3>
-                <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-         <div class="card difusores">
-            <img src="https://i.ibb.co/9kHKyn8S/Imagen-de-Whats-App-2025-09-05-a-las-10-42-11-df5a0740.jpg" alt="difusores">
-            <div class="info">
-                <h3>difusores Aromanza</h3>
-                <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
-         <div class="card difusores">
-            <img src="https://i.ibb.co/yF57XhJ5/Imagen-de-Whats-App-2025-09-05-a-las-10-42-18-2a07f131.jpg" alt="difusores">
-            <div class="info">
-                <h3>difusores Aromanza</h3>
-                <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100" class="btn-compra">CONSULTAR</a>
-            </div>
-        </div>
+
     </div>
 </div>
 
+<div class="botones-flotantes">
+    <button class="btn-flotante" id="btn-top" onclick="window.scrollTo(0,0)">↑</button>
+    <button class="btn-flotante float-dark" onclick="document.body.classList.toggle('dark-mode')">🌓</button>
+    <a href="https://instagram.com/azuvicka" target="_blank" class="btn-flotante float-ig">IG</a>
+    <a href="https://wa.me/541135158100" target="_blank" class="btn-flotante float-ws">WA</a>
+</div>
+
 <footer>
-    <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; letter-spacing: 5px;">AzuVicka</h2>
-    <p style="letter-spacing: 3px; color: var(--oro);">BIENESTAR & AROMAS</p>
-    <div style="margin-top: 40px;">
-        <a href="https://instagram.com/azuvicka" style="color: white; text-decoration: none; border: 1px solid white; padding: 10px 20px;">INSTAGRAM</a>
-    </div>
+    <h2 style="font-family: 'Playfair Display'; font-size: 3rem; letter-spacing: 5px;">AzuVicka</h2>
+    <p>BIENESTAR & AROMAS • 2024</p>
+    <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 20px;">Diseño Premium para Experiencias Únicas</p>
 </footer>
 
 <script>
-    // Crear Partículas Doradas
+    // 1. Zoom de Imágenes
+    function openZoom(src) {
+        document.getElementById('img-full').src = src;
+        document.getElementById('modal-img').style.display = 'flex';
+    }
+
+    // 2. Partículas
     function createParticles() {
         const container = document.getElementById('particles-container');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            const size = Math.random() * 5 + 2 + 'px';
-            particle.style.width = size;
-            particle.style.height = size;
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.top = Math.random() * 100 + 'vh';
-            particle.style.animationDuration = Math.random() * 10 + 5 + 's';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(particle);
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const s = Math.random() * 4 + 2 + 'px';
+            p.style.width = s; p.style.height = s;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = Math.random() * 100 + 'vh';
+            p.style.animationDuration = Math.random() * 10 + 5 + 's';
+            container.appendChild(p);
         }
     }
     createParticles();
 
-    // Filtros
+    // 3. Filtros
     function filterGallery(category, btn) {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
+        document.querySelectorAll('.card').forEach(card => {
             card.style.opacity = "0";
-            card.style.transform = "scale(0.9)";
             setTimeout(() => {
                 if (category === 'todos' || card.classList.contains(category)) {
                     card.style.display = "block";
-                    setTimeout(() => {
-                        card.style.opacity = "1";
-                        card.style.transform = "scale(1)";
-                    }, 50);
-                } else {
-                    card.style.display = "none";
-                }
-            }, 400);
+                    setTimeout(() => card.style.opacity = "1", 50);
+                } else { card.style.display = "none"; }
+            }, 300);
         });
     }
-</script>
 
+    // 4. Buscador
+    function searchProducts() {
+        let input = document.getElementById('search-input').value.toLowerCase();
+        document.querySelectorAll('.card').forEach(card => {
+            let title = card.querySelector('h3').innerText.toLowerCase();
+            card.style.display = title.includes(input) ? "block" : "none";
+        });
+    }
+
+    // 5. Scroll Top
+    window.onscroll = function() {
+        document.getElementById("btn-top").style.display = 
+            (document.documentElement.scrollTop > 600) ? "flex" : "none";
+    };
+
+    // 6. Mensaje WhatsApp
+    function consultarProducto(nombre) {
+        const msg = encodeURIComponent(`¡Hola AzuVicka! 👋 Me encantó este producto: ${nombre}. ¿Me podrías dar más información?`);
+        window.open(`https://wa.me/541135158100?text=${msg}`, '_blank');
+    }
+</script>
 </body>
 </html>
