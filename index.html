@@ -3,100 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AzuVicka | Catálogo Oficial 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>AzuVicka | Experiencia Sensorial Suprema 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* =========================================
+           VARIABLES Y CONFIGURACIÓN BASE
+           ========================================= */
         :root {
             --oro: #c5a059;
+            --oro-brillante: #f3cf8a;
             --oscuro: #121212;
             --marfil: #fdfaf6;
-            --bg-body: linear-gradient(-45deg, #fdfaf6, #ece0d1, #dcd0c0, #f5ebe0);
+            --bg-gradient: linear-gradient(-45deg, #fdfaf6, #ece0d1, #dcd0c0, #f5ebe0);
             --card-bg: #ffffff;
             --text-color: #121212;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         body.dark-mode {
-            --bg-body: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #000000, #121212);
+            --bg-gradient: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #000000, #121212);
             --card-bg: #1a1a1a;
             --text-color: #fdfaf6;
             --oscuro: #fdfaf6;
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
+
         body {
-            font-family: 'Montserrat', sans-serif; margin: 0; padding: 0;
-            background: var(--bg-body); background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite; color: var(--text-color);
-            overflow-x: hidden; transition: 0.5s;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0; padding: 0;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        /* HEADER */
-        header { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 10; position: relative; }
-        header h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); margin: 0; color: var(--oro); letter-spacing: 5px; text-transform: uppercase; }
-        .tagline { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--oro); margin-top: 10px; font-weight: 700; }
+        /* =========================================
+           HEADER Y NAVEGACIÓN
+           ========================================= */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
 
-        /* BUSCADOR Y FILTROS */
-        .search-container { margin: 20px auto; max-width: 400px; width: 90%; text-align: center; }
-        #search-input { width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid var(--oro); background: rgba(255,255,255,0.9); outline: none; }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            margin: 0;
+            background: linear-gradient(to right, #b8914b 20%, #f3cf8a 40%, #f3cf8a 60%, #b8914b 80%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
 
-        .nav-filtros { position: sticky; top: 0; z-index: 1000; background: rgba(18, 18, 18, 0.9); padding: 15px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; backdrop-filter: blur(10px); }
-        .filter-btn { background: transparent; border: 1px solid var(--oro); color: var(--oro); padding: 6px 15px; cursor: pointer; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .filter-btn.active, .filter-btn:hover { background: var(--oro); color: white; }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        /* GRID DE PRODUCTOS - AQUÍ CONTROLAMOS EL TAMAÑO */
-        .contenedor-principal { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        
-        .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; transition: 0.4s; position: relative; border: 1px solid rgba(197, 160, 89, 0.2); }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
-        
-        /* IMAGEN CONTROLADA */
-        .card img { width: 100%; height: 300px; object-fit: cover; cursor: zoom-in; display: block; }
+        .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--oro);
+            margin-top: 15px;
+            font-weight: 700;
+        }
 
-        .fav-btn { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; font-size: 1.1rem; color: #ccc; z-index: 5; transition: 0.3s; }
-        .fav-btn.active { color: #e74c3c; }
+        .search-container {
+            margin: 35px auto;
+            max-width: 450px;
+            width: 85%;
+        }
 
-        .info { padding: 20px; text-align: center; }
-        .info h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 0 0 10px; }
-        .precio { font-size: 1.2rem; color: var(--oro); font-weight: 700; display: block; margin-bottom: 15px; }
+        #search-input {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--oro);
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Montserrat';
+            outline: none;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
 
-        .btn-compra { background: var(--oscuro); color: var(--marfil); padding: 10px; text-decoration: none; display: block; font-weight: 700; font-size: 0.8rem; border-radius: 5px; text-transform: uppercase; transition: 0.3s; }
-        .btn-compra:hover { background: var(--oro); color: white; }
+        #search-input:focus { transform: scale(1.02); border-color: var(--oro-brillante); }
 
-        /* SECCIONES EXTRA */
-        .bienestar-seccion { background: rgba(197, 160, 89, 0.1); padding: 40px 20px; margin: 40px 0; border-radius: 15px; text-align: center; }
-        .bienestar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
-        .faq-container { max-width: 800px; margin: 40px auto; }
-        details { background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 8px; border: 1px solid var(--oro); cursor: pointer; }
+        .nav-filtros {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+        }
 
-        /* BOTONES FLOTANTES */
-        .botones-flotantes { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; }
-        .btn-flotante { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: none; cursor: pointer; text-decoration: none; font-size: 1.2rem; }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--oro);
+            color: var(--oro);
+            padding: 8px 22px;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.4s;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--oro);
+            color: #fff;
+        }
+
+        /* =========================================
+           GRID DE PRODUCTOS
+           ========================================= */
+        .contenedor-principal {
+            max-width: 1300px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 350px));
+            gap: 35px;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            cursor: zoom-in;
+            transition: 0.6s;
+        }
+
+        .card:hover img { transform: scale(1.05); }
+
+        .fav-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #ccc;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .fav-btn.active { color: #e74c3c; transform: scale(1.1); }
+
+        .info {
+            padding: 25px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin: 0 0 10px;
+            color: var(--text-color);
+        }
+
+        .precio {
+            font-size: 1.4rem;
+            color: var(--oro);
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .btn-compra {
+            background: var(--oscuro);
+            color: var(--marfil);
+            padding: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-compra:hover {
+            background: var(--oro);
+            color: white;
+        }
+
+        /* =========================================
+           BOTONES FLOTANTES
+           ========================================= */
+        .botones-flotantes {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .btn-flotante {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: 0.3s;
+        }
+
+        .btn-flotante:hover { transform: scale(1.15) rotate(5deg); }
+
         .float-fav { background: #e74c3c; position: relative; }
-        .fav-count { position: absolute; top: -5px; right: -5px; background: white; color: black; border-radius: 50%; width: 18px; height: 18px; font-size: 0.6rem; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .fav-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: white;
+            color: black;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 1px solid #e74c3c;
+        }
         .float-ws { background: #25d366; }
         .float-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
         .float-dark { background: #333; }
         #btn-top { background: var(--oro); display: none; }
 
-        /* FOOTER */
-        footer { padding: 60px 20px 20px; background: #000; color: #fff; text-align: center; }
-        .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; }
-        .footer-section h3 { color: var(--oro); font-family: 'Playfair Display'; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .footer-section ul { padding: 0; list-style: none; }
-        .footer-section li { margin-bottom: 8px; font-size: 0.8rem; opacity: 0.8; }
-        .footer-section a { color: white; text-decoration: none; }
-        .newsletter input { padding: 10px; width: 70%; border-radius: 4px; border: none; }
-        .newsletter button { padding: 10px; background: var(--oro); border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        /* =========================================
+           FOOTER Y MAPA
+           ========================================= */
+        footer {
+            padding: 80px 25px 30px;
+            background: #000;
+            color: #fff;
+            border-top: 4px solid var(--oro);
+        }
 
-        /* MODAL ZOOM */
-        #modal-zoom { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; cursor: zoom-out; }
-        #modal-zoom img { max-width: 90%; max-height: 80%; border: 2px solid var(--oro); }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
 
-        .particle { position: absolute; background: var(--oro); border-radius: 50%; opacity: 0.2; pointer-events: none; animation: float linear infinite; }
-        @keyframes float { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 0.4; } 100% { transform: translateY(-100vh); opacity: 0; } }
+        .footer-section h3 {
+            color: var(--oro);
+            font-family: 'Playfair Display';
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-section p { font-size: 0.9rem; opacity: 0.8; line-height: 1.8; margin-bottom: 15px; }
+
+        /* Logos de Pago */
+        .pagos-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .pago-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #1a1a1a;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            border: 1px solid #333;
+        }
+        .mp-color { color: #009ee3; font-weight: bold; }
+        .ef-color { color: #25d366; font-weight: bold; }
+
+        /* Mapa Boton */
+        .map-box {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=500');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            border: 1px solid var(--oro);
+            transition: 0.4s;
+            text-align: center;
+            padding: 20px;
+        }
+        .map-box:hover { transform: scale(1.02); filter: brightness(1.2); }
+        .map-box i { font-size: 2rem; margin-bottom: 10px; }
+
+        /* =========================================
+           PARTÍCULAS Y OTROS
+           ========================================= */
+        #modal-zoom {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            backdrop-filter: blur(8px);
+        }
+        #modal-zoom img { max-width: 90%; max-height: 85%; border: 2px solid var(--oro); box-shadow: 0 0 50px rgba(197, 160, 89, 0.4); }
+
+        .particle { position: absolute; background: var(--oro); border-radius: 50%; opacity: 0.3; pointer-events: none; animation: float linear infinite; }
+        @keyframes float { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 0.5; } 100% { transform: translateY(-100vh); opacity: 0; } }
+
     </style>
 </head>
 <body>
@@ -104,68 +396,58 @@
 <div id="particles-container"></div>
 
 <div id="modal-zoom" onclick="this.style.display='none'">
-    <img id="img-full" src="" alt="Zoom">
+    <img id="img-full" src="" alt="Vista Previa">
 </div>
 
 <header>
     <h1>AzuVicka</h1>
-    <div class="tagline">Bienestar & Aromas • 2025</div>
+    <div class="tagline">Bienestar & Aromas • Grand Bourg</div>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="¿Qué estás buscando?" onkeyup="searchProducts()">
+        <input type="text" id="search-input" placeholder="Buscar mi fragancia favorita..." onkeyup="searchProducts()">
     </div>
 </header>
 
 <nav class="nav-filtros">
     <button class="filter-btn active" onclick="filterGallery('todos', this)">Todos</button>
     <button class="filter-btn" onclick="filterGallery('sahumerios', this)">Sahumerios</button>
-    <button class="filter-btn" onclick="filterGallery('velas', this)">Velas</button>
+    <button class="filter-btn" onclick="filterGallery('velas', this)">Velas de Soja</button>
     <button class="filter-btn" onclick="filterGallery('cascadas', this)">Cascadas</button>
 </nav>
 
 <div class="contenedor-principal">
     <div class="grid" id="product-grid">
+        
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural Premium', this)">❤</button>
             <img src="https://i.ibb.co/kVpvzNVJ/Imagen-de-Whats-App-2025-09-05-a-las-10-53-36-ee6774e6.jpg" onclick="openZoom(this.src)">
             <div class="info">
-                <h3>Sahumerio Natural</h3>
+                <h3>Sahumerio Natural Premium</h3>
                 <span class="precio">$2.800</span>
-                <a href="https://wa.me/541135158100?text=Consulta: Sahumerio Natural" class="btn-compra">Consultar</a>
+                <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Natural" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
+
         <div class="card velas">
-            <button class="fav-btn" onclick="toggleFav('Vela de Soja', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Vela de Soja Vainilla', this)">❤</button>
             <img src="https://i.ibb.co/qMMrmFX1/Imagen-de-Whats-App-2025-09-05-a-las-11-00-11-3e99ca97.jpg" onclick="openZoom(this.src)">
             <div class="info">
-                <h3>Vela de Soja</h3>
+                <h3>Vela de Soja Vainilla</h3>
                 <span class="precio">$3.500</span>
-                <a href="https://wa.me/541135158100?text=Consulta: Vela de Soja" class="btn-compra">Consultar</a>
+                <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20la%20Vela%20de%20Vainilla" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
+
         <div class="card cascadas">
-            <button class="fav-btn" onclick="toggleFav('Buda de Humo', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Buda Zen Humo', this)">❤</button>
             <img src="https://i.ibb.co/FkGTd5ZG/Imagen-de-Whats-App-2025-09-05-a-las-10-57-32-4beecfbc.jpg" onclick="openZoom(this.src)">
             <div class="info">
-                <h3>Buda de Humo</h3>
+                <h3>Buda Zen de Humo</h3>
                 <span class="precio">$4.200</span>
-                <a href="https://wa.me/541135158100?text=Consulta: Buda de Humo" class="btn-compra">Consultar</a>
+                <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Buda%20Zen" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
-    </div>
 
-    <div class="bienestar-seccion">
-        <h2 style="font-family: 'Playfair Display'; color: var(--oro);">Guía de Aromas</h2>
-        <div class="bienestar-grid">
-            <div class="item"><h4>Lavanda</h4><p>Relajación total.</p></div>
-            <div class="item"><h4>Sándalo</h4><p>Paz espiritual.</p></div>
-            <div class="item"><h4>Cítricos</h4><p>Energía pura.</p></div>
         </div>
-    </div>
-
-    <div class="faq-container">
-        <details><summary>¿Cómo comprar?</summary><p>Seleccionas tus favoritos y nos envías el pedido por WhatsApp.</p></details>
-        <details><summary>¿Hacen envíos?</summary><p>Sí, a todo el país.</p></details>
-    </div>
 </div>
 
 <div class="botones-flotantes">
@@ -180,27 +462,40 @@
     <div class="footer-grid">
         <div class="footer-section">
             <h3>AzuVicka</h3>
-            <p style="font-size: 0.8rem; opacity: 0.7;">Elevamos tus sentidos con aromas únicos y diseño artesanal.</p>
+            <p><strong>Ubicación:</strong> Grand Bourg, Malvinas Argentinas.</p>
+            <p><strong>Logística:</strong> Realizamos envíos a domicilio pactados y encuentros en puntos cercanos. (No contamos con showroom).</p>
         </div>
+
         <div class="footer-section">
-            <h3>Contacto</h3>
-            <ul>
-                <li>📍 Buenos Aires, Argentina</li>
-                <li>📞 +54 11 3515-8100</li>
-                <li>✉️ info@azuvicka.com</li>
-            </ul>
+            <h3>Medios de Pago</h3>
+            <p>Aceptamos diversas formas para tu comodidad:</p>
+            <div class="pagos-container">
+                <div class="pago-item"><span class="mp-color">Mercado Pago</span></div>
+                <div class="pago-item"><span class="ef-color">Efectivo</span></div>
+                <div class="pago-item"><span>Transferencia</span></div>
+                <div class="pago-item"><span>Cuenta DNI</span></div>
+            </div>
         </div>
-        <div class="footer-section newsletter">
-            <h3>Newsletter</h3>
-            <input type="email" placeholder="Tu email...">
-            <button onclick="alert('¡Suscrito!')">OK</button>
+
+        <div class="footer-section">
+            <h3>Nuestra Zona</h3>
+            <a href="https://www.google.com/maps/place/Grand+Bourg,+Provincia+de+Buenos+Aires" target="_blank" class="map-box">
+                <div style="font-size: 1.5rem;">📍</div>
+                <strong>VER MAPA DE ZONA</strong>
+                <p style="font-size: 0.7rem; margin: 5px 0 0;">Grand Bourg y alrededores</p>
+            </a>
         </div>
     </div>
-    <div style="margin-top:40px; font-size:0.7rem; opacity:0.5;">&copy; 2025 AZUVICKA - TODOS LOS DERECHOS RESERVADOS</div>
+    
+    <div style="text-align: center; margin-top: 50px; font-size: 0.75rem; opacity: 0.4; border-top: 1px solid #222; padding-top: 20px;">
+        &copy; 2025 AZUVICKA - BUENOS AIRES, ARGENTINA. TODOS LOS DERECHOS RESERVADOS.
+    </div>
 </footer>
 
 <script>
-    // Favoritos
+    /* =========================================
+       LÓGICA DE FAVORITOS
+       ========================================= */
     let favs = JSON.parse(localStorage.getItem('azuvicka_favs')) || [];
     function updateUI() { document.getElementById('count').innerText = favs.length; }
     updateUI();
@@ -218,40 +513,53 @@
     }
 
     function sendFavs() {
-        if (favs.length === 0) return alert("No tienes productos en favoritos.");
-        let text = "¡Hola! Me interesan estos productos: " + favs.join(", ");
+        if (favs.length === 0) return alert("¡Tu lista de favoritos está vacía!");
+        let text = "¡Hola AzuVicka! 👋 Me interesan estos productos de mi lista:\n\n- " + favs.join("\n- ");
         window.open(`https://wa.me/541135158100?text=${encodeURIComponent(text)}`);
     }
 
-    // Buscador
+    /* =========================================
+       BUSCADOR Y FILTROS
+       ========================================= */
     function searchProducts() {
         let q = document.getElementById('search-input').value.toLowerCase();
         document.querySelectorAll('.card').forEach(card => {
             let h3 = card.querySelector('h3').innerText.toLowerCase();
-            card.style.display = h3.includes(q) ? "block" : "none";
+            card.style.display = h3.includes(q) ? "flex" : "none";
         });
     }
 
-    // Filtros
     function filterGallery(cat, btn) {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         document.querySelectorAll('.card').forEach(card => {
-            card.style.display = (cat === 'todos' || card.classList.contains(cat)) ? "block" : "none";
+            if (cat === 'todos' || card.classList.contains(cat)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
         });
     }
 
-    // Zoom e Interfaz
-    function openZoom(src) { document.getElementById('img-full').src = src; document.getElementById('modal-zoom').style.display = 'flex'; }
-    window.onscroll = () => { document.getElementById('btn-top').style.display = window.scrollY > 400 ? 'flex' : 'none'; };
+    /* =========================================
+       INTERFAZ Y EFECTOS
+       ========================================= */
+    function openZoom(src) { 
+        document.getElementById('img-full').src = src; 
+        document.getElementById('modal-zoom').style.display = 'flex'; 
+    }
 
-    // Partículas
+    window.onscroll = () => { 
+        document.getElementById('btn-top').style.display = window.scrollY > 400 ? 'flex' : 'none'; 
+    };
+
     function createParticles() {
         const container = document.getElementById('particles-container');
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
             const p = document.createElement('div');
             p.className = 'particle';
-            p.style.width = p.style.height = Math.random() * 4 + 2 + 'px';
+            const size = Math.random() * 4 + 2 + 'px';
+            p.style.width = size; p.style.height = size;
             p.style.left = Math.random() * 100 + 'vw';
             p.style.top = Math.random() * 100 + 'vh';
             p.style.animationDuration = Math.random() * 10 + 5 + 's';
