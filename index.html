@@ -458,6 +458,31 @@
     <a href="https://wa.me/541135158100" target="_blank" class="btn-flotante float-ws">WA</a>
 </div>
 
+    <section id="pedido-especial" style="max-width: 600px; margin: 60px auto; padding: 30px; background: #fff; border-radius: 20px; border: 2px solid #c5a059; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+    <h2 style="text-align: center; font-family: 'Playfair Display', serif; color: #c5a059; margin-bottom: 10px;">Solicitud de Pedido</h2>
+    <p style="text-align: center; font-size: 0.85rem; color: #666; margin-bottom: 25px;">Completá tus datos y nos pondremos en contacto para coordinar la entrega y el pago.</p>
+    
+    <form name="pedidos-azuvicka" method="POST" data-netlify="true">
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; text-transform: uppercase;">Tu Nombre</label>
+            <input type="text" name="cliente" placeholder="Ej: Maria Lopez" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat';">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; text-transform: uppercase;">WhatsApp o Email</label>
+            <input type="text" name="contacto" placeholder="Para responderte pronto..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat';">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; text-transform: uppercase;">¿Qué productos te interesan?</label>
+            <textarea name="pedido" rows="4" placeholder="Ej: 3 Sahumerios Naturales y 1 Vela de Vainilla..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat';"></textarea>
+        </div>
+
+        <button type="submit" style="width: 100%; padding: 15px; background: #121212; color: #fdfaf6; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; letter-spacing: 2px; transition: 0.3s;">
+            ENVIAR PEDIDO
+        </button>
+    </form>
+</section>
 <footer>
     <div class="footer-grid">
         <div class="footer-section">
@@ -570,3 +595,4 @@
 </script>
 </body>
 </html>
+
