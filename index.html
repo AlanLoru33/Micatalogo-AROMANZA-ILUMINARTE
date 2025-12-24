@@ -46,6 +46,19 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* 1. BARRA DE ANUNCIO SUPERIOR PROFESIONAL */
+        .top-bar {
+            background: #000;
+            color: var(--oro);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--oro);
+        }
+
         /* =========================================
            HEADER Y NAVEGACIÓN
            ========================================= */
@@ -226,6 +239,7 @@
             display: block;
         }
 
+        /* EFECTO HOVER PROFESIONAL EN BOTÓN COMPRA */
         .btn-compra {
             background: var(--oscuro);
             color: var(--marfil);
@@ -242,6 +256,8 @@
         .btn-compra:hover {
             background: var(--oro);
             color: white;
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
         }
 
         /* =========================================
@@ -298,6 +314,46 @@
         #btn-top { background: var(--oro); display: none; }
 
         /* =========================================
+           SECCIÓN TESTIMONIOS
+           ========================================= */
+        .testimonials {
+            padding: 80px 25px;
+            text-align: center;
+            background: rgba(197, 160, 89, 0.05);
+            margin: 50px 0;
+        }
+
+        .testimonial-grid {
+            max-width: 1000px;
+            margin: 30px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card span {
+            color: var(--oro);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
            FOOTER Y MAPA
            ========================================= */
         footer {
@@ -327,7 +383,6 @@
 
         .footer-section p { font-size: 0.9rem; opacity: 0.8; line-height: 1.8; margin-bottom: 15px; }
 
-        /* Logos de Pago */
         .pagos-container {
             display: flex;
             gap: 15px;
@@ -347,7 +402,6 @@
         .mp-color { color: #009ee3; font-weight: bold; }
         .ef-color { color: #25d366; font-weight: bold; }
 
-        /* Mapa Boton */
         .map-box {
             width: 100%;
             height: 180px;
@@ -367,11 +421,7 @@
             padding: 20px;
         }
         .map-box:hover { transform: scale(1.02); filter: brightness(1.2); }
-        .map-box i { font-size: 2rem; margin-bottom: 10px; }
 
-        /* =========================================
-           PARTÍCULAS Y OTROS
-           ========================================= */
         #modal-zoom {
             display: none;
             position: fixed;
@@ -392,6 +442,8 @@
     </style>
 </head>
 <body>
+
+<div class="top-bar">🚚 ENVÍOS PACTADOS EN GRAND BOURG Y ALREDEDORES</div>
 
 <div id="particles-container"></div>
 
@@ -418,122 +470,122 @@
     <button class="filter-btn" onclick="filterGallery('aceites', this)">aceites</button>
 </nav>
 
+<section style="padding: 80px 20px; text-align: center; background: rgba(197, 160, 89, 0.03);">
+    <div style="margin-bottom: 35px;">
+        <span style="letter-spacing: 5px; color: var(--oro); font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">Descubre la</span>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-color); margin: 5px 0 0; font-style: italic;">Esencia Artesanal</h2>
+        <div style="width: 50px; height: 1px; background: var(--oro); margin: 20px auto;"></div>
+    </div>
+
+    <div style="max-width: 850px; margin: 0 auto; position: relative;">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.15); border: 1px solid rgba(197, 160, 89, 0.2); background: #000;">
+            <iframe 
+                src="https://drive.google.com/file/d/1fb5fv-wEaVVFwXHWXIsU4hSgRL7O7R0n/preview" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                allow="autoplay; fullscreen" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
 <div class="contenedor-principal">
     <div class="grid" id="product-grid">
         
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural Premium', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural Premium - Jazmín', this)">❤</button>
             <img src="https://i.ibb.co/kVpvzNVJ/Imagen-de-Whats-App-2025-09-05-a-las-10-53-36-ee6774e6.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Natural Premium</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    jazmin, sandia, uva 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">jazmin, sandia, uva</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Natural" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural Premium', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural Premium - Mango', this)">❤</button>
             <img src="https://i.ibb.co/QFDmcxJj/Imagen-de-Whats-App-2025-09-05-a-las-10-53-48-ffbbbd5c.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Natural Premium</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    mango, melon, lavanda  
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">mango, melon, lavanda</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Natural" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural Premium', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Natural Premium - Pomelo', this)">❤</button>
             <img src="https://i.ibb.co/kVpvzNVJ/Imagen-de-Whats-App-2025-09-05-a-las-10-53-36-ee6774e6.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Natural Premium</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    pomelo, limon, frutilla, naranja  
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">pomelo, limon, frutilla, naranja</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Natural" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
         
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Organico', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Organico - Frutos Rojos', this)">❤</button>
             <img src="https://i.ibb.co/DP5QQwJJ/Imagen-de-Whats-App-2025-09-05-a-las-10-56-32-e68258e7.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Organico</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    frutos rojos, coco salvia, berry kiss, esencias de la india, variedad de fragancias 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">frutos rojos, coco salvia, berry kiss, esencias de la india</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Organico" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
          <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Organico', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Organico - Ruda', this)">❤</button>
             <img src="https://i.ibb.co/JFcdx7jN/Imagen-de-Whats-App-2025-09-05-a-las-10-53-00-f48bfded.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Organico</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    ruda nativa romero, violetas lavanda, canela salvia  
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">ruda nativa romero, violetas lavanda, canela salvia</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Organico" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
          <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Tibetano', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Tibetano - Gardenias', this)">❤</button>
             <img src="https://i.ibb.co/bjLVrmpp/Imagen-de-Whats-App-2025-12-20-a-las-23-04-29-73035298.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Tibetano</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    gardenias flores blancas, jazmin del pais, miel organica, esencias de la india
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">gardenias flores blancas, jazmin del pais, miel organica</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Tibetano" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
          <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Palo Santo', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Palo Santo - Incienso', this)">❤</button>
             <img src="https://i.ibb.co/wZj3LPz0/Imagen-de-Whats-App-2025-09-05-a-las-10-55-10-0bc69071.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Palo Santo</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    incienso, lavanda, sandalo, puro 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">incienso, lavanda, sandalo, puro</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Palo%20Santo" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Palo Santo', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Palo Santo - Incienso Consagrado', this)">❤</button>
             <img src="https://i.ibb.co/wZj3LPz0/Imagen-de-Whats-App-2025-09-05-a-las-10-55-10-0bc69071.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Palo Santo</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    incienso consagrado, sandalo hindu, diamante negro 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">incienso consagrado, sandalo hindu, diamante negro</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Palo%20Santo" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
-
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sagrada Madre', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sagrada Madre - Mix', this)">❤</button>
             <img src="https://i.ibb.co/hxCNyw3X/Imagen-de-Whats-App-2025-09-05-a-las-10-53-23-bb5e537e.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sagrada Madre</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    yagra - cadmila - olibano, violetas - lavanda, orquidea - laurel. rosa - vainilla
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">yagra-cadmila, violetas-lavanda, orquidea-laurel</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sagrada%20Madre" class="btn-compra">Consultar por WhatsApp</a>
             </div>
@@ -544,35 +596,29 @@
             <img src="https://i.ibb.co/xt3qQqgQ/Imagen-de-Whats-App-2025-12-20-a-las-23-04-29-b05f2ead.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sagrada Madre THC</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    tropicana cookies, lemon haze, water melon wonder, pineapple pie, white widow 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">tropicana cookies, lemon haze, white widow</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sagrada%20Madre THC" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Tibetanos', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Tibetano - Canela', this)">❤</button>
             <img src="https://i.ibb.co/LdvZ7Yxr/Imagen-de-Whats-App-2025-12-20-a-las-23-04-29-f274128e.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Tibetano</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    fragancia oriental, 7 poderes, canela mistica, esencias de la india, naranja pimienta, coconout
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">canela mistica, 7 poderes, esencias de la india</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Tibetano" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card sahumerios">
-            <button class="fav-btn" onclick="toggleFav('Sahumerio Tibetanos', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Sahumerio Tibetano - Ebano', this)">❤</button>
             <img src="https://i.ibb.co/yc73y1wD/Imagen-de-Whats-App-2025-12-20-a-las-23-04-30-797be044.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Sahumerio Tibetano</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                ebano marfil, incienso consagrado, citronella, premium lemon
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">ebano marfil, incienso consagrado, citronella</p>
                 <span class="precio">$2.800</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Sahumerio%20Tibetano" class="btn-compra">Consultar por WhatsApp</a>
             </div>
@@ -583,14 +629,14 @@
             <img src="https://i.ibb.co/qMMrmFX1/Imagen-de-Whats-App-2025-09-05-a-las-11-00-11-3e99ca97.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Vela de Soja Vainilla</h3>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">Aroma intenso y relajante</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20la%20Vela%20de%20Vainilla" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
-       <div class="card difusores">
-            <button class="fav-btn" onclick="toggleFav('Difusores Aromanza 200ml', this)">❤</button>
-            
+        <div class="card difusores">
+            <button class="fav-btn" onclick="toggleFav('Difusor Aromanza - Mora', this)">❤</button>
             <div style="position: relative; height: 320px; overflow: hidden;">
                 <img src="https://i.ibb.co/Fk1WJ7MT/Imagen-de-Whats-App-2025-12-20-a-las-23-05-12-9e185a7e.jpg" 
                      style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s; cursor: pointer;" 
@@ -598,46 +644,38 @@
                      onmouseout="this.src='https://i.ibb.co/Fk1WJ7MT/Imagen-de-Whats-App-2025-12-20-a-las-23-05-12-9e185a7e.jpg'" 
                      onclick="openZoom(this.src)">
             </div>
-
             <div class="info">
                 <h3>Difusores Aromanza 200 ml</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    mora frambuesa, manzana canela, melon, frutos rojos, mango maracuya, limon
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">mora frambuesa, manzana canela, frutos rojos</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesan%20los%20difusores%20Aromanza" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card difusores">
-            <button class="fav-btn" onclick="toggleFav('Difusores Aromanza', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Difusor Aromanza - Ocean', this)">❤</button>
             <img src="https://i.ibb.co/yF57XhJ5/Imagen-de-Whats-App-2025-09-05-a-las-10-42-18-2a07f131.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Difusores Aromanza 200 ml</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                manzana canela, lemon pie, premium lemon, ocean blue, naranja pimienta, noche de luna 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">ocean blue, naranja pimienta, lemon pie</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesan%20los%20difusores" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card difusores">
-            <button class="fav-btn" onclick="toggleFav('Difusores Aromanza', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Difusor Aromanza - Candy', this)">❤</button>
             <img src="https://i.ibb.co/VYpvgtDL/Imagen-de-Whats-App-2025-09-05-a-las-10-42-11-df5a0740.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Difusores Aromanza 200 ml</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    esencias de la india, candy grape, coco beach, miel y almendras, vainilla sugar, miel floral  
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">candy grape, coco beach, vainilla sugar</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesan%20los%20difusores" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card difusores">
-            <button class="fav-btn" onclick="toggleFav('Difusores Aromanza 200ml', this)">❤</button>
-            
+            <button class="fav-btn" onclick="toggleFav('Difusor Aromanza - Maracuya', this)">❤</button>
             <div style="position: relative; height: 320px; overflow: hidden;">
                 <img src="https://i.ibb.co/BKyVZcB1/Imagen-de-Whats-App-2025-12-20-a-las-23-07-04-eeb1a86b.jpg" 
                      style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s; cursor: pointer;" 
@@ -645,58 +683,60 @@
                      onmouseout="this.src='https://i.ibb.co/BKyVZcB1/Imagen-de-Whats-App-2025-12-20-a-las-23-07-04-eeb1a86b.jpg'" 
                      onclick="openZoom(this.src)">
             </div>
-
             <div class="info">
                 <h3>Difusores Aromanza 200 ml</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    mora frambuesa, manzana canela, melon, frutos rojos, mango maracuya, limon
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">mango maracuya, limon, frutos rojos</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesan%20los%20difusores%20Aromanza" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card difusores">
-            <button class="fav-btn" onclick="toggleFav('Difusores Iluminarte', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Difusor Iluminarte - Citric', this)">❤</button>
             <img src="https://i.ibb.co/yF4BJC69/Imagen-de-Whats-App-2025-09-05-a-las-10-42-03-b9e9d29a.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Difusores Iluminarte 200 ml</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    citric lemon, citronella organica, agua marina, angel baby, hawaiian, lavandas del valle
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">citric lemon, agua marina, angel baby</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesan%20los%20difusores" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card difusores">
-            <button class="fav-btn" onclick="toggleFav('Difusores Iluminarte', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Difusor Iluminarte - Uva', this)">❤</button>
             <img src="https://i.ibb.co/qLbQ0wGm/Imagen-de-Whats-App-2025-09-05-a-las-10-41-52-f54a2a42.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Difusores Iluminarte 200 ml</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    uva dulce, tuti fruti, mil flores, coconout, granada mediterranea 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">uva dulce, tuti fruti, coconout</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesan%20los%20difusores" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card conitos">
-            <button class="fav-btn" onclick="toggleFav('conitos', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Conitos Darshen - Coco', this)">❤</button>
             <img src="https://i.ibb.co/pjJJX7qz/Imagen-de-Whats-App-2025-09-05-a-las-10-56-54-547aeba8.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Conitos Darshen</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                    Coco, Jasmine, Palo Santo
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">Coco, Jasmine, Palo Santo</p>
+                <span class="precio">$3.500</span>
+                <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20los%20conitos" class="btn-compra">Consultar por WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card conitos">
+            <button class="fav-btn" onclick="toggleFav('Conitos Darshen - Vainilla', this)">❤</button>
+            <img src="https://i.ibb.co/j9ZJPsbK/Imagen-de-Whats-App-2025-09-05-a-las-10-56-43-1ca0faaf.jpg" onclick="openZoom(this.src)">
+            <div class="info">
+                <h3>Conitos Darshen</h3>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">cinnamon, vainilla, apple</p>
                 <span class="precio">$3.500</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20los%20conitos" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card cascadas">
-            <button class="fav-btn" onclick="toggleFav('Buda Zen Humo', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Buda Zen de Humo', this)">❤</button>
             <img src="https://i.ibb.co/rrStcxc/Imagen-de-Whats-App-2025-09-05-a-las-10-57-23-67ee66a6.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Buda Zen de Humo</h3>
@@ -716,100 +756,116 @@
             </div>
             <div class="info">
                 <h3>Hornito Cerámica</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; font-style: italic;">
-                    Desliza o pasa el mouse para ver otro ángulo
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; font-style: italic;">Desliza para ver otro ángulo</p>
                 <span class="precio">$4.200</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20el%20Hornito%20Cerámica" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card cascadas">
-            <button class="fav-btn" onclick="toggleFav('cascada', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Cascada Clásica', this)">❤</button>
             <img src="https://i.ibb.co/FkGTd5ZG/Imagen-de-Whats-App-2025-09-05-a-las-10-57-32-4beecfbc.jpg" onclick="openZoom(this.src)">
             <div class="info">
-                <h3>cascada</h3>
+                <h3>Cascada</h3>
                 <span class="precio">$4.200</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20la%20cascada" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card cascadas">
-            <button class="fav-btn" onclick="toggleFav('cascada', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Cascada Buda', this)">❤</button>
             <img src="https://i.ibb.co/nq2cM7bp/Imagen-de-Whats-App-2025-09-05-a-las-10-57-11-b4f4db68.jpg" onclick="openZoom(this.src)">
             <div class="info">
-                <h3>cascada</h3>
+                <h3>Cascada Buda</h3>
                 <span class="precio">$4.200</span>
-                <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20la%20cascada" class="btn-compra">Consultar por WhatsApp</a>
+                <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20la%20cascada buda" class="btn-compra">Consultar por WhatsApp</a>
+            </div>
+        </div>
+
+         <div class="card cascadas">
+            <button class="fav-btn" onclick="toggleFav('Buda de Cara', this)">❤</button>
+            <img src="https://i.ibb.co/nq749nX3/Imagen-de-Whats-App-2025-12-20-a-las-22-45-57-5563918f.jpg" onclick="openZoom(this.src)">
+            <div class="info">
+                <h3>Cascada Cara Buda</h3>
+                <span class="precio">$4.200</span>
+                <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20El%20Buda" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card textiles">
-            <button class="fav-btn" onclick="toggleFav('cascada', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Textil Iluminarte - Coco', this)">❤</button>
             <img src="https://i.ibb.co/FThdZpZ/Imagen-de-Whats-App-2025-12-20-a-las-23-06-47-074e3073.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Textiles Iluminarte</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                coco y vainilla, limon y naranja, flores blancas, mango maracuya 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">coco y vainilla, flores blancas, maracuya</p>
                 <span class="precio">$4.200</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20los%20textiles%20Iluminarte" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card textiles">
-            <button class="fav-btn" onclick="toggleFav('cascada', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Textil Perfumes - Scandal', this)">❤</button>
             <img src="https://i.ibb.co/mrRFHK1L/Imagen-de-Whats-App-2025-12-20-a-las-23-06-47-d08fc413.jpg" onclick="openZoom(this.src)">
             <div class="info">
-                <h3>Textiles Iluminarte fragancia perfumes</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                cony, scandal, polo ´s, one millon 
-                </p>
+                <h3>Textiles Fragancia Perfumes</h3>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">cony, scandal, polo, one million</p>
                 <span class="precio">$4.200</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20los%20textiles%20Iluminarte" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card textiles">
-            <button class="fav-btn" onclick="toggleFav('cascada', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Textil Fantis - Chicle', this)">❤</button>
             <img src="https://i.ibb.co/7tQ81F2Z/Imagen-de-Whats-App-2025-12-20-a-las-23-06-47-632be376.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Textiles Fantis</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                chicle, pera y flores, jazmin, naranja y jengibre  
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">chicle, pera y flores, naranja jengibre</p>
                 <span class="precio">$4.200</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20los%20textiles%20Fantis" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
         <div class="card textiles">
-            <button class="fav-btn" onclick="toggleFav('cascada', this)">❤</button>
+            <button class="fav-btn" onclick="toggleFav('Textil Fantis - Vainilla', this)">❤</button>
             <img src="https://i.ibb.co/7tQ81F2Z/Imagen-de-Whats-App-2025-12-20-a-las-23-06-47-632be376.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Textiles Fantis</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                vainilla caramelo, oriental, fresias y rosas, sandia y frutilla 
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">vainilla caramelo, fresias, sandia frutilla</p>
                 <span class="precio">$4.200</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20los%20textiles%20Fantis" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
 
-         <div class="card aceites">
-            <button class="fav-btn" onclick="toggleFav('cascada', this)">❤</button>
+        <div class="card aceites">
+            <button class="fav-btn" onclick="toggleFav('Aceite Fantis - Jazmín', this)">❤</button>
             <img src="https://i.ibb.co/MkK3LGjD/Imagen-de-Whats-App-2025-09-05-a-las-11-01-02-23c142e0.jpg" onclick="openZoom(this.src)">
             <div class="info">
                 <h3>Aceites Fantis</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">
-                jazmin, palo santo, azahar, mirra, nag champa, limon, sandalo, coco vainilla, citric flowers
-                </p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: -5px; margin-bottom: 10px; font-style: italic;">jazmin, palo santo, azahar, mirra, nag champa</p>
                 <span class="precio">$4.200</span>
                 <a href="https://wa.me/541135158100?text=Hola!%20Me%20interesa%20los%20Aceites%20Fantis" class="btn-compra">Consultar por WhatsApp</a>
             </div>
         </div>
     </div>
 </div>
+
+<section class="testimonials">
+    <h2 style="font-family: 'Playfair Display'; color: var(--oro); font-size: 2rem;">Experiencias AzuVicka</h2>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <p>"La calidad de los sahumerios es superior. El aroma dura muchísimo y no deja ese olor a humo pesado. Mi casa ahora es un santuario."</p>
+            <span>— MARCELA S. (Grand Bourg)</span>
+        </div>
+        <div class="testimonial-card">
+            <p>"Compré las velas de soja y los difusores. La presentación es impecable y la atención de los chicos es súper amable. ¡Volveré a comprar!"</p>
+            <span>— RICARDO G.</span>
+        </div>
+        <div class="testimonial-card">
+            <p>"Los textiles son lo mejor para las sábanas. El aroma a Vainilla Caramelo es una locura de rico. ¡Súper recomendados!"</p>
+            <span>— SOL B.</span>
+        </div>
+    </div>
+</section>
 
 <div class="botones-flotantes">
     <button class="btn-flotante" id="btn-top" onclick="window.scrollTo(0,0)">↑</button>
@@ -821,7 +877,7 @@
 
 <section id="pedido-especial" style="max-width: 600px; margin: 60px auto; padding: 30px; background: #fff; border-radius: 20px; border: 2px solid #c5a059; box-shadow: 0 10px 30px rgba(0,0,0,0.05); color: #333;">
     <h2 style="text-align: center; font-family: 'Playfair Display', serif; color: #c5a059; margin-bottom: 10px;">Solicitud de Pedido</h2>
-    <p style="text-align: center; font-size: 0.85rem; color: #666; margin-bottom: 25px;">Completá tus datos y nos pondremos en contacto para coordinar la entrega y el pago.</p>
+    <p style="text-align: center; font-size: 0.85rem; color: #666; margin-bottom: 25px;">Completá tus datos y coordinamos la entrega.</p>
     
     <form name="pedidos-azuvicka" method="POST" data-netlify="true" action="/gracias">
         <div style="margin-bottom: 20px;">
@@ -830,13 +886,13 @@
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label style="display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; text-transform: uppercase;">WhatsApp o Email</label>
-            <input type="text" name="contacto" placeholder="Para responderte pronto..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat';">
+            <label style="display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; text-transform: uppercase;">WhatsApp</label>
+            <input type="text" name="contacto" placeholder="Tu número para avisarte..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat';">
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label style="display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; text-transform: uppercase;">¿Qué productos te interesan?</label>
-            <textarea name="pedido" rows="4" placeholder="Ej: 3 Sahumerios Naturales y 1 Vela de Vainilla..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat';"></textarea>
+            <label style="display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 8px; text-transform: uppercase;">Productos de interés</label>
+            <textarea name="pedido" rows="4" placeholder="Ej: 3 Sahumerios Naturales y 1 Vela..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat';"></textarea>
         </div>
 
         <button type="submit" style="width: 100%; padding: 15px; background: #121212; color: #fdfaf6; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; letter-spacing: 2px; transition: 0.3s;">
@@ -850,12 +906,11 @@
         <div class="footer-section">
             <h3>AzuVicka</h3>
             <p><strong>Ubicación:</strong> Grand Bourg, Malvinas Argentinas.</p>
-            <p><strong>Logística:</strong> Realizamos envíos a domicilio pactados y encuentros en puntos cercanos. (No contamos con showroom).</p>
+            <p><strong>Logística:</strong> Envíos a domicilio pactados y puntos de encuentro.</p>
         </div>
 
         <div class="footer-section">
             <h3>Medios de Pago</h3>
-            <p>Aceptamos diversas formas para tu comodidad:</p>
             <div class="pagos-container">
                 <div class="pago-item"><span class="mp-color">Mercado Pago</span></div>
                 <div class="pago-item"><span class="ef-color">Efectivo</span></div>
@@ -866,23 +921,21 @@
 
         <div class="footer-section">
             <h3>Nuestra Zona</h3>
-            <a href="https://www.google.com/maps/place/Grand+Bourg,+Provincia+de+Buenos+Aires" target="_blank" class="map-box">
+            <a href="https://maps.app.goo.gl/9Z..." target="_blank" class="map-box">
                 <div style="font-size: 1.5rem;">📍</div>
-                <strong>VER MAPA DE ZONA</strong>
+                <strong>VER MAPA DE COBERTURA</strong>
                 <p style="font-size: 0.7rem; margin: 5px 0 0;">Grand Bourg y alrededores</p>
             </a>
         </div>
     </div>
     
     <div style="text-align: center; margin-top: 50px; font-size: 0.75rem; opacity: 0.4; border-top: 1px solid #222; padding-top: 20px;">
-        © 2025 AZUVICKA - BUENOS AIRES, ARGENTINA. TODOS LOS DERECHOS RESERVADOS.
+        © 2025 AZUVICKA - BUENOS AIRES, ARGENTINA.
     </div>
 </footer>
 
 <script>
-    /* =========================================
-       LÓGICA DE FAVORITOS
-       ========================================= */
+    /* LÓGICA DE FAVORITOS */
     let favs = JSON.parse(localStorage.getItem('azuvicka_favs')) || [];
     function updateUI() { document.getElementById('count').innerText = favs.length; }
     updateUI();
@@ -901,13 +954,11 @@
 
     function sendFavs() {
         if (favs.length === 0) return alert("¡Tu lista de favoritos está vacía!");
-        let text = "¡Hola AzuVicka! 👋 Me interesan estos productos de mi lista:\n\n- " + favs.join("\n- ");
+        let text = "¡Hola AzuVicka! 👋 Me interesan estos productos:\n\n- " + favs.join("\n- ");
         window.open(`https://wa.me/541135158100?text=${encodeURIComponent(text)}`);
     }
 
-    /* =========================================
-       BUSCADOR Y FILTROS
-       ========================================= */
+    /* BUSCADOR Y FILTROS */
     function searchProducts() {
         let q = document.getElementById('search-input').value.toLowerCase();
         document.querySelectorAll('.card').forEach(card => {
@@ -928,9 +979,7 @@
         });
     }
 
-    /* =========================================
-       INTERFAZ Y EFECTOS
-       ========================================= */
+    /* INTERFAZ Y EFECTOS */
     function openZoom(src) { 
         document.getElementById('img-full').src = src; 
         document.getElementById('modal-zoom').style.display = 'flex'; 
